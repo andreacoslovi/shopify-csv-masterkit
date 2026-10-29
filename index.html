@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="it" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopify CSV Catalog Masterkit + Automation Workflow</title>
+    <title>Shopify CSV Catalog Masterkit + n8n Automation</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,85 +12,264 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0fdf4',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                        }
+                        shopify: '#95bf47',
+                        shopifyDark: '#5e8e3e',
+                        n8n: '#ff6d5a',
+                        n8nDark: '#e04e3b',
+                        brandGlow: '#6366f1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(149, 191, 71, 0.25);
+        }
+        .glow-effect-n8n {
+            box-shadow: 0 0 50px -10px rgba(255, 109, 90, 0.25);
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-shopify selection:text-slate-950">
 
-    <!-- Header / Nav -->
-    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center font-bold text-slate-950 text-lg">S</div>
-                <span class="font-bold text-slate-100 text-lg tracking-tight">Shopify CSV Masterkit</span>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 text-white text-xs md:text-sm font-medium py-2 px-4 text-center shadow-inner">
+        <span class="inline-flex items-center gap-2">
+            <span class="bg-white/20 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wide">Instant Access</span>
+            <span>Shopify Store Owner & Automation Specialist Masterkit</span>
+        </span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-shopify to-emerald-500 flex items-center justify-center font-bold text-slate-950 text-xl shadow-lg">
+                    S
+                </div>
+                <span class="font-extrabold text-lg tracking-tight text-white" data-gumroad-field="name">
+                    Shopify CSV Catalog Masterkit
+                </span>
             </div>
-            <a href="https://ecomflowkit.gumroad.com/l/shopify-csv-catalog-kit" class="bg-brand-500 hover:bg-brand-600 text-slate-950 font-semibold px-4 py-2 rounded-lg transition duration-200 text-sm shadow-lg shadow-brand-500/20">
-                Acquista ora €14,90
-            </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Ready for Shopify 2026+
+                </div>
+                <a href="https://ecomflowkit.gumroad.com/l/shopify-csv-catalog-kit" target="_blank" class="bg-gradient-to-r from-shopify to-emerald-500 hover:opacity-90 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all transform active:scale-95 shadow-md">
+                    Get Kit — <span data-gumroad-field="price">€14.90</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-20 px-4 max-w-5xl mx-auto text-center relative">
-        <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 mb-8 text-xs font-medium text-brand-500">
-            <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
-            <span>Template Pronto + Workflow n8n Automatizzato</span>
-        </div>
-        
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Basta errori nell'importazione dei <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-400">cataloghi Shopify</span>
-        </h1>
-        
-        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Elimina i blocchi sulle varianti e gli errori di mappatura CSV. Importa e sincronizza migliaia di prodotti, tag e scorte in pochi secondi.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <a href="https://ecomflowkit.gumroad.com/l/shopify-csv-catalog-kit" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg transition duration-200 shadow-xl shadow-brand-500/25 flex items-center justify-center space-x-2">
-                <span>Scarica il Masterkit completo</span>
-                <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
-        </div>
-
-        <!-- Spec Badge -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto pt-6 border-t border-slate-900 text-slate-400 text-sm">
-            <div class="flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-check text-brand-500"></i>
-                <span>Download immediato</span>
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950 pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <!-- Badges -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 mb-8 backdrop-blur-sm">
+                <span class="text-shopify font-bold">100% Compatible</span> with Shopify CSV Standards & n8n Workflows
             </div>
-            <div class="flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-check text-brand-500"></i>
-                <span>Licenza a vita</span>
+
+            <!-- Headline -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+                Stop wasting hours fixing product <span class="text-transparent bg-clip-text bg-gradient-to-r from-shopify via-emerald-400 to-teal-300">import errors</span> on Shopify.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-3xl mx-auto text-base sm:text-xl text-slate-300 leading-relaxed mb-10" data-gumroad-field="description">
+                Standardized CSV template + ready-to-use n8n automation workflow to manage thousands of product variants, tags, pricing, and catalog updates effortlessly.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+                <a href="https://ecomflowkit.gumroad.com/l/shopify-csv-catalog-kit" target="_blank" class="w-full sm:w-auto min-w-[260px] bg-gradient-to-r from-shopify via-emerald-500 to-teal-500 hover:from-shopifyDark hover:to-emerald-600 text-slate-950 font-extrabold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-shopify/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center flex items-center justify-center gap-2 group">
+                    <span>Download Masterkit Now</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+                <a href="#workflow" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-base px-6 py-4 rounded-xl transition-all text-center">
+                    See How It Works
+                </a>
             </div>
-            <div class="flex items-center justify-center space-x-2 col-span-2 md:col-span-1">
-                <i class="fa-solid fa-check text-brand-500"></i>
-                <span>Supporto n8n + CSV</span>
+
+            <!-- Feature Pills -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs sm:text-sm font-medium text-slate-400 max-w-4xl mx-auto">
+                <div class="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Zero Encoding Corruption
+                </div>
+                <div class="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    UTF-8 Plain Text Standard
+                </div>
+                <div class="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Pre-Mapped Variant Logic
+                </div>
+                <div class="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Instant Import to n8n
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="py-16 bg-slate-900/40 border-y border-slate-800/60 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-shopify mb-2">Complete Toolkit</h2>
+                <p class="text-2xl sm:text-4xl font-extrabold text-white">Everything Included in the Kit</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Module 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition-all glow-effect flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 font-extrabold text-xl mb-6 border border-emerald-500/20">
+                            01
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-emerald-400 mb-3">CSV File</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Master Template CSV</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                            Fully structured native Shopify import file with columns for handles, variants, inventory SKUs, tags, and pricing structure.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2">
+                            <span class="text-shopify">✓</span> Native Shopify field hierarchy
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-shopify">✓</span> Prevents tag & variant errors
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-shopify">✓</span> UTF-8 Plain Text compliant
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-n8n/50 transition-all glow-effect-n8n flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-n8n/10 rounded-xl flex items-center justify-center text-n8n font-extrabold text-xl mb-6 border border-n8n/20">
+                            02
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-n8n mb-3">JSON Workflow</div>
+                        <h3 class="text-xl font-bold text-white mb-2">n8n Automation Blueprint</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                            Pre-built n8n node sequence ready to import. Connects webhooks, parses CSV data, and updates inventory/products directly into Shopify API.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2">
+                            <span class="text-n8n">✓</span> One-click JSON workflow import
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-n8n">✓</span> Automatic inventory sync nodes
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-n8n">✓</span> Custom webhook endpoint support
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-indigo-500/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 font-extrabold text-xl mb-6 border border-indigo-500/20">
+                            03
+                        </div>
+                        <div class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-indigo-400 mb-3">Setup Guide</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Quickstart Instructions</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                            Clear, step-by-step setup guide in English. Explains exactly how to save plain text without encoding corruption and connect n8n credentials.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2">
+                            <span class="text-indigo-400">✓</span> Mac/Windows text encoding fixes
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-indigo-400">✓</span> Shopify API credential guide
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-indigo-400">✓</span> Instant troubleshooting checklist
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Content Breakdown -->
-    <section class="py-16 bg-slate-900/50 border-y border-slate-800/80 px-4">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-12">Cosa include il Kit</h2>
+    <!-- How It Works Section -->
+    <section id="workflow" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-shopify mb-2">Simple Process</h2>
+            <p class="text-2xl sm:text-4xl font-extrabold text-white">Up and Running in 3 Steps</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 text-center">
+                <div class="w-10 h-10 bg-slate-800 text-white font-bold rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-700">1</div>
+                <h4 class="font-bold text-white mb-2">Fill the Master CSV</h4>
+                <p class="text-xs text-slate-400">Populate your catalog using Google Sheets or Excel using our pre-mapped Shopify columns.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 text-center">
+                <div class="w-10 h-10 bg-slate-800 text-white font-bold rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-700">2</div>
+                <h4 class="font-bold text-white mb-2">Import JSON into n8n</h4>
+                <p class="text-xs text-slate-400">Open n8n, choose "Import from File", upload the workflow, and add your API credentials.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 text-center">
+                <div class="w-10 h-10 bg-slate-800 text-white font-bold rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-700">3</div>
+                <h4 class="font-bold text-white mb-2">Automate Catalog Sync</h4>
+                <p class="text-xs text-slate-400">Trigger imports automatically or upload directly into Shopify without formatting errors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Card Section -->
+    <section class="py-16 bg-slate-900/80 border-t border-slate-800">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl relative flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-center text-brand-500 mb-5 text-xl">
-                            <i class="fa-solid fa-file-csv"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Master Template CSV</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Struttura
+            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-shopify to-emerald-500 text-slate-950 text-[11px] font-extrabold uppercase px-4 py-1.5 rounded-bl-xl tracking-wider">
+                    Instant Download
+                </div>
+
+                <p class="text-sm font-semibold text-shopify uppercase tracking-widest mb-2">Special Offer</p>
+                <h3 class="text-3xl font-extrabold text-white mb-4">Shopify CSV Catalog Masterkit</h3>
+                
+                <div class="flex items-baseline justify-center gap-2 mb-6">
+                    <span class="text-5xl font-black text-white" data-gumroad-field="price">€14.90</span>
+                    <span class="text-slate-500 line-through text-lg">€49.00</span>
+                </div>
+
+                <p class="text-sm text-slate-400 max-w-lg mx-auto mb-8">
+                    Get full lifetime access to the CSV master template, n8n automation JSON, and setup instructions.
+                </p>
+
+                <!-- CTA Button -->
+                <a href="https://ecomflowkit.gumroad.com/l/shopify-csv-catalog-kit" target="_blank" class="block w-full bg-gradient-to-r from-shopify via-emerald-500 to-teal-500 hover:from-shopifyDark hover:to-emerald-600 text-slate-950 font-extrabold text-lg py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 mb-4">
+                    Buy Kit Now — Instant Access
+                </a>
+
+                <div class="flex items-center justify-center gap-6 text-xs text-slate-400">
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Secure Gumroad Checkout
